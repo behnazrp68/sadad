@@ -14,8 +14,6 @@ class App:Application(),Injector {
         appComponent = DaggerAppComponent.builder()
             .appModule(AppModule(applicationContext))
             .build()
-
-
     }
 
     override fun createInfoSubComponent(): InfoSubComponent {

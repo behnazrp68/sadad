@@ -26,6 +26,12 @@ class InfoLocalDataSourceImpl(private val infoDao: InfoDao) : InfoLocalDataSourc
         return info
     }
 
+    override suspend fun updateInfos(infos: List<Info>) {
+        CoroutineScope(Dispatchers.IO).launch {
+            infoDao.updateInfos(infos)
+        }
+    }
+
 
     override suspend fun clearAll() {
         CoroutineScope(Dispatchers.IO).launch {

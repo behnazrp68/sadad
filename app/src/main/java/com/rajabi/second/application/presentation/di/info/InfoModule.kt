@@ -2,6 +2,7 @@ package com.rajabi.second.application.presentation.di.info
 
 import com.rajabi.second.application.domain.usecase.SaveInfoUseCase
 import com.rajabi.second.application.domain.usecase.UpdateInfoUseCase
+import com.rajabi.second.application.domain.usecase.UpdateInfosUseCase
 import com.rajabi.second.application.presentation.MainActivityViewModelFactory
 import dagger.Module
 import dagger.Provides
@@ -12,8 +13,9 @@ class InfoModule {
     @Provides
     fun providesMainActivityViewModelFactory(
         saveInfoUseCase: SaveInfoUseCase,
-        updateInfoUseCase: UpdateInfoUseCase
+        updateInfoUseCase: UpdateInfoUseCase,
+        updateInfosUseCase: UpdateInfosUseCase
     ): MainActivityViewModelFactory {
-        return MainActivityViewModelFactory(saveInfoUseCase, updateInfoUseCase)
+        return MainActivityViewModelFactory(saveInfoUseCase, updateInfoUseCase,updateInfosUseCase)
     }
 }

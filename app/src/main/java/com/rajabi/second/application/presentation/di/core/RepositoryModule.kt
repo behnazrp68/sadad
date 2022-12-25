@@ -17,9 +17,8 @@ class RepositoryModule {
     @Provides
     fun provideInfoRepository(
         infoRemoteDataSource: InfoRemoteDataSource,
-        infoLocalDataSource: InfoLocalDataSource,
-        info: Info
+        infoLocalDataSource: InfoLocalDataSource
     ): InfoRepository {
-        return InfoRepositoryImpl(infoRemoteDataSource, infoLocalDataSource, info)
+        return InfoRepositoryImpl(infoRemoteDataSource, infoLocalDataSource)
     }
 }

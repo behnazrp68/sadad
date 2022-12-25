@@ -1,10 +1,6 @@
 package com.rajabi.second.application.data.db
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
-import androidx.room.Update
+import androidx.room.*
 import com.rajabi.second.application.data.model.Info
 
 @Dao
@@ -20,4 +16,16 @@ interface InfoDao {
 
     @Query("SELECT * FROM info_table")
     suspend fun getInfos(): List<Info>
+
+
+
+    @Transaction
+    suspend fun updateInfos(infos: List<Info>) {
+        infos.forEach { info ->
+            if (info.bool==false) {
+                updateInfo(info)
+            }
+        }
+    }
+
 }

@@ -6,10 +6,13 @@ import androidx.lifecycle.liveData
 import com.rajabi.second.application.data.model.Info
 import com.rajabi.second.application.domain.usecase.SaveInfoUseCase
 import com.rajabi.second.application.domain.usecase.UpdateInfoUseCase
+import com.rajabi.second.application.domain.usecase.UpdateInfosUseCase
+import java.util.*
 
 class MainActivityViewModel(
     private val saveInfoUseCase: SaveInfoUseCase,
-    private val updateInfoUseCase: UpdateInfoUseCase
+    private val updateInfoUseCase: UpdateInfoUseCase,
+    private val updateInfosUseCase: UpdateInfosUseCase
 ):ViewModel() {
 
     fun saveInfo(info: Info):LiveData<Info?> = liveData {
@@ -21,5 +24,12 @@ class MainActivityViewModel(
         val updatedList = updateInfoUseCase.execute()
         emit(updatedList)
     }
+
+    fun updateInfos()= liveData {
+        val updatedList = updateInfosUseCase.execute()
+        emit(updatedList)
+    }
+
+
 
 }

@@ -3,7 +3,7 @@ package com.rajabi.second.application.domain.usecase
 import com.rajabi.second.application.data.model.Info
 import com.rajabi.second.application.domain.repository.InfoRepository
 
-class UpdateInfoUseCase(private val infoRepository: InfoRepository,private val info: Info) {
+class UpdateInfosUseCase(private val infoRepository: InfoRepository, private val infos: List<Info>) {
 
-    suspend fun execute(): Info? = infoRepository.updateInfo(info)
+    suspend fun execute() = infoRepository.updateInfos(infos)
 }

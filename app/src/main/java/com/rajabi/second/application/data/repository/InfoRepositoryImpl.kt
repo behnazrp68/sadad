@@ -8,12 +8,16 @@ import com.rajabi.second.application.domain.repository.InfoRepository
 
 class InfoRepositoryImpl(
     private val infoRemoteDataSource: InfoRemoteDataSource,
-    private val infoLocalDataSource: InfoLocalDataSource, private val info: Info
+    private val infoLocalDataSource: InfoLocalDataSource
 ) : InfoRepository {
 
 
-    override suspend fun updateInfos(info: Info): Info? {
+    override suspend fun updateInfo(info: Info): Info? {
         return infoLocalDataSource.saveInfoToDB(info)
+    }
+
+    override suspend fun updateInfos(infos: List<Info>) {
+        return infoLocalDataSource.updateInfos(infos)
     }
 
 

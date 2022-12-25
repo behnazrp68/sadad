@@ -10,6 +10,8 @@ import com.rajabi.second.application.R
 import com.rajabi.second.application.data.model.Info
 import com.rajabi.second.application.databinding.ActivityMainBinding
 import com.rajabi.second.application.presentation.di.core.Injector
+import java.util.*
+import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
@@ -30,9 +32,13 @@ class MainActivity : AppCompatActivity() {
         val name = getIntent().getExtras()?.get("name") as? String
         val bool = getIntent().getExtras()?.get("bool") as? Boolean
         info = Info(0, name, bool)
-//        binding.text.text = name
         viewModel.saveInfo(info)
-
+        Timer().schedule(object : TimerTask() {
+            override fun run() {
+                viewModel.updateInfos()
+                Log.i("MYTAG","successs")
+            }
+        }, 50000)
 
     }
 
