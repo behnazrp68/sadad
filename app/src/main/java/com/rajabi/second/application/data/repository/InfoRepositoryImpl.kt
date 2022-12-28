@@ -17,7 +17,8 @@ class InfoRepositoryImpl(
     }
 
     override suspend fun updateInfos(infos: List<Info>) {
-        return infoLocalDataSource.updateInfos(infos)
+        infoLocalDataSource.updateInfos(infos)
+        saveInfoToApi()
     }
 
 
